@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('movimentos', function (Blueprint $table) {
             $table->id();
+            $table-> foreignId('id_produto')->constraint() ->cascadeOnDelete();
+            $table->enum('tipo_movimentacao', ['entrada', 'saida']);
+            $table->integer('quantidade');
+            $table->date('data_movimentacao');
             $table->timestamps();
         });
     }
